@@ -14,7 +14,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  Widget mainview = PengajuanView();
+  Widget mainview = ExampleCalendarView();
 
   return runApp(GetMaterialApp(
       debugShowCheckedModeBanner: false, theme: defaultTheme, home: mainview));

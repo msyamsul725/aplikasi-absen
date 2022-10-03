@@ -9,6 +9,8 @@
         "Login",
         "Welcome",
         "DetailRekap",
-        "Pengajuan"
+        "Pengajuan",
+        "TambahIzin",
+        "ExampleCalendar"
     ]
 }

@@ -3,7 +3,7 @@ description: A new Flutter project.
 publish_to: 'none'
 version: 1.0.0+1
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 dependencies:
   flutter:
     sdk: flutter
@@ -15,8 +15,8 @@ dependencies:
   flutter_image_compress: ^1.1.1
   path_provider: ^2.0.1
   provider: ^6.0.3
-  uuid: ^3.0.4 
-  freezed_annotation: 
+  uuid: ^3.0.4
+  freezed_annotation:
   json_annotation: ^4.7.0
   google_sign_in: ^5.4.1
   flutter_screenutil: ^5.5.3+2
@@ -45,19 +45,17 @@ dependencies:
   split_view: ^3.2.1
   geocoding: ^2.0.5
   geopoint: ^1.0.0
-
-
-  
+  calendar_view: ^1.0.0
 
   # FIREBASE
   firebase_core: #ignore
   firebase_auth: #ignore
-  cloud_firestore:  
+  cloud_firestore:
 
   # STATE MANAGEMENT
   get:
   share_plus_web: ^3.0.0
-  
+
   file_selector_web: ^0.8.1+5
   package_info_plus_web: ^1.0.5
 
@@ -66,16 +64,15 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^1.0.0
   flutter_launcher_icons: ^0.10.0
-  freezed: 
+  freezed:
   json_serializable: ^6.4.0
   build_runner: ^2.2.1
-  
-  
+
 flutter_icons:
-  android: "launcher_icon"
+  android: 'launcher_icon'
   ios: true
-  image_path: "assets/icon/icon.png"
-  
+  image_path: 'assets/icon/icon.png'
+
 flutter:
   uses-material-design: true
   assets:
