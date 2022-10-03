@@ -1,4 +1,12 @@
 {
     "state_management": "getx",
-    "modules": []
+    "modules": [
+        "Aktivitas",
+        "Profil",
+        "Absensi",
+        "Dashboard",
+        "Navigation",
+        "Login",
+        "Welcome"
+    ]
 }
