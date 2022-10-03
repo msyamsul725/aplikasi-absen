@@ -97,9 +97,12 @@ class PengajuanView extends StatelessWidget {
                       itemBuilder: (context, index) {
                         var item = controller.menu[index];
                         var isSelected = item == controller.selected;
+
                         return InkWell(
                           onTap: () {
                             controller.selected = item;
+                            controller.category = item;
+
                             controller.changeSelected();
                           },
                           child: Container(
@@ -150,6 +153,22 @@ class PengajuanView extends StatelessWidget {
                         statusColor = Colors.green;
                       }
 
+                      if (controller.category.isNotEmpty &&
+                          controller.category.contains("Semua")) {
+                        if (!item.status
+                            .toString()
+                            .toLowerCase()
+                            .contains("Semua")) {
+                          controller.category = "";
+                        }
+                      } else {
+                        if (!item.status
+                            .toString()
+                            .toLowerCase()
+                            .contains(controller.category.toLowerCase())) {
+                          return Container();
+                        }
+                      }
                       return Container(
                           height: 150,
                           width: double.infinity,

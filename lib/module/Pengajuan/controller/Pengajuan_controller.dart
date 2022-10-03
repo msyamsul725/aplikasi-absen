@@ -6,7 +6,9 @@ class PengajuanController extends GetxController {
 
   String selected = "";
 
-  List menu = ["Semua", "Approved", "Reject"];
+  List menu = ["Semua", "Approved", "Reject", "Pandding"];
+
+  String category = "";
 
   changeSelected() {
     update();
