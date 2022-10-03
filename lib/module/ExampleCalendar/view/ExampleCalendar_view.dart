@@ -21,9 +21,7 @@ class ExampleCalendarView extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
-                children: const [
-                  //body
-                ],
+                children: const [],
               ),
             ),
           ),

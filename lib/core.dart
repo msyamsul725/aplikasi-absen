@@ -4,6 +4,7 @@ export 'package:flutter_hyper_ui/module/Aktivitas/controller/Aktivitas_controlle
 export 'package:flutter_hyper_ui/module/Aktivitas/view/Aktivitas_view.dart';
 export 'package:flutter_hyper_ui/module/Dashboard/controller/Dashboard_controller.dart';
 export 'package:flutter_hyper_ui/module/Dashboard/view/Dashboard_view.dart';
+<<<<<<< HEAD
 export 'package:flutter_hyper_ui/module/DetailRekap/controller/DetailRekap_controller.dart';
 export 'package:flutter_hyper_ui/module/DetailRekap/view/DetailRekap_view.dart';
 export 'package:flutter_hyper_ui/module/ExampleCalendar/controller/ExampleCalendar_controller.dart';
@@ -20,3 +21,5 @@ export 'package:flutter_hyper_ui/module/TambahIzin/controller/TambahIzin_control
 export 'package:flutter_hyper_ui/module/TambahIzin/view/TambahIzin_view.dart';
 export 'package:flutter_hyper_ui/module/Welcome/controller/Welcome_controller.dart';
 export 'package:flutter_hyper_ui/module/Welcome/view/Welcome_view.dart';
+=======
+>>>>>>> 826bbfc04bdfa93a8e5a3ff306ea76b84de8a29f

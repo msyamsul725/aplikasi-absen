@@ -8,9 +8,11 @@
         "Navigation",
         "Login",
         "Welcome",
+        "LoginAbsen",
         "DetailRekap",
         "Pengajuan",
         "TambahIzin",
         "ExampleCalendar"
+
     ]
 }
