@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hyper_ui/core.dart';
+
+import 'package:flutter_hyper_ui/module/LoginAbsen/view/LoginAbsen_view.dart';
+import 'package:flutter_hyper_ui/module/Welcome/controller/Welcome_controller.dart';
 
 import 'package:get/get.dart';
 

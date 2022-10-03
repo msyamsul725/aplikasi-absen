@@ -8,6 +8,11 @@
         "Navigation",
         "Login",
         "Welcome",
+<<<<<<< HEAD
         "LoginAbsen"
+=======
+        "DetailRekap",
+        "Pengajuan"
+>>>>>>> a2c9467c6556f2b860614b4d79ea1283fa7ac3fe
     ]
 }

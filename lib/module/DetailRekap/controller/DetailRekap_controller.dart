@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import '../view/Absensi_view.dart';
+import '../view/DetailRekap_view.dart';
 
-class AbsensiController extends GetxController {
-  AbsensiView? view;
+class DetailRekapController extends GetxController {
+  DetailRekapView? view;
 
   @override
   void onInit() {

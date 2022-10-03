@@ -49,7 +49,7 @@ class _BasicMainNavigationViewState extends State<BasicMainNavigationView> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.transfer_within_a_station),
-            label: 'Kegiatan',
+            label: 'Aktivitas',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.live_help),
