@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hyper_ui/service/pengajuan_cuti.dart';
 import '../controller/Pengajuan_controller.dart';
 
 import 'package:get/get.dart';
@@ -133,6 +134,125 @@ class PengajuanView extends StatelessWidget {
                         );
                       },
                     ),
+                  ),
+                  ListView.builder(
+                    itemCount: PengajuanCutiServices.pengajuan.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      var item = PengajuanCutiServices.pengajuan[index];
+                      var status = item.status;
+                      Color? statusColor;
+                      if (status == "Pandding") {
+                        statusColor = Colors.yellow;
+                      } else if (status == "Reject") {
+                        statusColor = Colors.red;
+                      } else if (status == "Approved") {
+                        statusColor = Colors.green;
+                      }
+
+                      return Container(
+                          height: 150,
+                          width: double.infinity,
+                          margin: const EdgeInsets.all(10.0),
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: NetworkImage(
+                                item.image,
+                              ),
+                              fit: BoxFit.cover,
+                            ),
+                            color: Colors.red[200],
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(
+                                16.0,
+                              ),
+                            ),
+                          ),
+                          child: Stack(
+                            children: [
+                              Container(
+                                height: 150,
+                                width: double.infinity,
+                                color: Colors.black.withOpacity(0.1),
+                              ),
+                              Positioned(
+                                right: 10,
+                                top: 10,
+                                child: Container(
+                                  height: 35,
+                                  width: 120,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white.withOpacity(0.5),
+                                    borderRadius: const BorderRadius.all(
+                                      Radius.circular(
+                                        16.0,
+                                      ),
+                                    ),
+                                  ),
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      CircleAvatar(
+                                        radius: 5,
+                                        backgroundColor: statusColor,
+                                        child: const Text(""),
+                                      ),
+                                      Text(
+                                        item.status,
+                                        style: const TextStyle(
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 10,
+                                left: 10,
+                                child: Container(
+                                  height: 30.0,
+                                  width: 250,
+                                  decoration: const BoxDecoration(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(
+                                        16.0,
+                                      ),
+                                    ),
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        item.date,
+                                        style: const TextStyle(
+                                          fontSize: 10.0,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Text(
+                                        item.title,
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 1,
+                                        style: const TextStyle(
+                                          fontSize: 15.0,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ));
+                    },
                   ),
                 ],
               ),
