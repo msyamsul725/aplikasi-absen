@@ -8,8 +8,8 @@ export 'package:flutter_hyper_ui/module/DetailRekap/controller/DetailRekap_contr
 export 'package:flutter_hyper_ui/module/DetailRekap/view/DetailRekap_view.dart';
 export 'package:flutter_hyper_ui/module/ExampleCalendar/controller/ExampleCalendar_controller.dart';
 export 'package:flutter_hyper_ui/module/ExampleCalendar/view/ExampleCalendar_view.dart';
-export 'package:flutter_hyper_ui/module/Login/controller/Login_controller.dart';
-export 'package:flutter_hyper_ui/module/Login/view/Login_view.dart';
+// export 'package:flutter_hyper_ui/module/Login/controller/Login_controller.dart';
+// export 'package:flutter_hyper_ui/module/Login/view/Login_view.dart';
 export 'package:flutter_hyper_ui/module/Navigation/controller/Navigation_controller.dart';
 export 'package:flutter_hyper_ui/module/Navigation/view/Navigation_view.dart';
 export 'package:flutter_hyper_ui/module/Pengajuan/controller/Pengajuan_controller.dart';

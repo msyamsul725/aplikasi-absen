@@ -4,18 +4,9 @@ import '../view/Dashboard_view.dart';
 class DashboardController extends GetxController {
   DashboardView? view;
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
+  var isAbsen = false;
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
+  addState() {
+    update();
   }
 }

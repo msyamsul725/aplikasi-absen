@@ -19,10 +19,7 @@ class _BasicMainNavigationViewState extends State<BasicMainNavigationView> {
       "Messages",
       style: optionStyle,
     ),
-    const Text(
-      "Profi",
-      style: optionStyle,
-    ),
+    const PengajuanView()
   ];
 
   void onTabTapped(int index) {
