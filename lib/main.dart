@@ -14,9 +14,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  Widget mainview = PengajuanView();
 
   return runApp(GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: defaultTheme,
-      home: WelcomeView()));
+      debugShowCheckedModeBanner: false, theme: defaultTheme, home: mainview));
 }
