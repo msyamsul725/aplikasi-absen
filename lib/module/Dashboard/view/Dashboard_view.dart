@@ -1,17 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hyper_ui/core.dart';
-
+import 'dart:async';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
-class DashboardView extends StatelessWidget {
+class DashboardView extends StatefulWidget {
   const DashboardView({Key? key}) : super(key: key);
+
+  @override
+  State<DashboardView> createState() => _DashboardViewState();
+}
+
+class _DashboardViewState extends State<DashboardView> {
+  late String _timeString;
+
+  @override
+  void initState() {
+    _timeString = "${DateTime.now().hour} : ${DateTime.now().minute}";
+    Timer.periodic(const Duration(seconds: 1), (Timer t) => _getCurrentTime());
+    super.initState();
+  }
+
+  void _getCurrentTime() async {
+    setState(() {
+      _timeString = "${DateTime.now().hour} : ${DateTime.now().minute}";
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<DashboardController>(
       init: DashboardController(),
       builder: (controller) {
-        controller.view = this;
+        controller.view = widget;
+        var date = DateTime.now();
+        String nameDay = DateFormat('EEEE').format(date);
+        String nameMount = DateFormat('MMMM').format(date);
+        String dateToday =
+            "$nameDay ${DateTime.now().day} $nameMount  ${DateTime.now().year}";
 
         Widget AbsenMasuk = Column(
           children: [
@@ -174,9 +200,9 @@ class DashboardView extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      const Text(
-                        "13:20:31",
-                        style: TextStyle(
+                      Text(
+                        _timeString,
+                        style: const TextStyle(
                           fontSize: 25.0,
                           fontWeight: FontWeight.bold,
                         ),
@@ -300,10 +326,10 @@ class DashboardView extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.symmetric(vertical: 4.0),
                     width: MediaQuery.of(context).size.width,
-                    child: const Text(
-                      "13:20",
+                    child: Text(
+                      _timeString,
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 40.0,
                       ),
@@ -317,7 +343,7 @@ class DashboardView extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 4.0),
                     width: MediaQuery.of(context).size.width,
                     child: Text(
-                      "Kamis, 13 Sep 2021",
+                      dateToday,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
