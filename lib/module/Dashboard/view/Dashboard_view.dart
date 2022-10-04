@@ -53,7 +53,7 @@ class DashboardView extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: () {
-                      Get.to(const TambahIzinView());
+                      Get.to(TambahIzinView());
                     },
                     child: Column(
                       children: [
