@@ -15,10 +15,7 @@ class _BasicMainNavigationViewState extends State<BasicMainNavigationView> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.w500);
   final List<Widget> _children = [
     const DashboardView(),
-    const Text(
-      "Messages",
-      style: optionStyle,
-    ),
+    const ExampleCalendarView(),
     const PengajuanView()
   ];
 

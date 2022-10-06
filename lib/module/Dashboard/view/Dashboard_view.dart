@@ -13,18 +13,29 @@ class DashboardView extends StatefulWidget {
 
 class _DashboardViewState extends State<DashboardView> {
   late String _timeString;
+  late Timer timer;
+  String? email;
 
   @override
   void initState() {
     _timeString = "${DateTime.now().hour} : ${DateTime.now().minute}";
-    Timer.periodic(const Duration(seconds: 1), (Timer t) => _getCurrentTime());
+    timer = Timer.periodic(
+        const Duration(seconds: 1), (Timer t) => _getCurrentTime());
     super.initState();
   }
 
   void _getCurrentTime() async {
-    setState(() {
-      _timeString = "${DateTime.now().hour} : ${DateTime.now().minute}";
-    });
+    if (mounted) {
+      setState(() {
+        _timeString = "${DateTime.now().hour} : ${DateTime.now().minute}";
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    timer.cancel();
   }
 
   @override
@@ -44,6 +55,7 @@ class _DashboardViewState extends State<DashboardView> {
             InkWell(
               onTap: () {
                 controller.isAbsen = true;
+                controller.absenMasuk();
                 controller.update();
               },
               child: CircleAvatar(
