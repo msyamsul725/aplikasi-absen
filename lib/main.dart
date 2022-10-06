@@ -20,6 +20,7 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
   Widget mainview = BasicMainNavigationView();
+  // Widget mainview = WelcomeView();
 
   return runApp(GetMaterialApp(
       debugShowCheckedModeBanner: false, theme: defaultTheme, home: mainview));

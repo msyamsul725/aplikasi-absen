@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hyper_ui/core.dart';
 import 'dart:async';
@@ -14,26 +13,39 @@ class DashboardView extends StatefulWidget {
 
 class _DashboardViewState extends State<DashboardView> {
   late String _timeString;
+  late Timer timer;
 
   @override
   void initState() {
     _timeString = "${DateTime.now().hour} : ${DateTime.now().minute}";
-    Timer.periodic(const Duration(seconds: 1), (Timer t) => _getCurrentTime());
+    timer = Timer.periodic(
+        const Duration(seconds: 1), (Timer t) => _getCurrentTime());
     super.initState();
   }
 
   void _getCurrentTime() async {
-    setState(() {
-      _timeString = "${DateTime.now().hour} : ${DateTime.now().minute}";
-    });
+    if (mounted) {
+      setState(() {
+        _timeString = "${DateTime.now().hour} : ${DateTime.now().minute}";
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    timer.cancel();
   }
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     FirebaseAuth auth = FirebaseAuth.instance;
     if (auth.currentUser != null ) {
       print(auth.currentUser!.email);
     }
+=======
+>>>>>>> 6a1a68942ace0688fadf9fdbd323f3158a65f529
     return GetBuilder<DashboardController>(
       init: DashboardController(),
       builder: (controller) {
@@ -48,7 +60,7 @@ class _DashboardViewState extends State<DashboardView> {
           children: [
             InkWell(
               onTap: () {
-                controller.isAbsen = true;
+                controller.absenMasuk();
                 controller.update();
               },
               child: CircleAvatar(
@@ -295,7 +307,7 @@ class _DashboardViewState extends State<DashboardView> {
                                 TextSpan(
                                   children: <TextSpan>[
                                     TextSpan(
-                                      text: auth.currentUser!.email,
+                                      text: controller.email,
                                       style: const TextStyle(
                                           color:
                                               Color.fromARGB(255, 227, 143, 17),
