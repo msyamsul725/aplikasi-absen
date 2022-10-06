@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hyper_ui/core.dart';
 import 'dart:async';
@@ -40,6 +41,10 @@ class _DashboardViewState extends State<DashboardView> {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    if (auth.currentUser != null) {
+      print(auth.currentUser!.email);
+    }
     return GetBuilder<DashboardController>(
       init: DashboardController(),
       builder: (controller) {
@@ -91,7 +96,7 @@ class _DashboardViewState extends State<DashboardView> {
                 children: [
                   InkWell(
                     onTap: () {
-                      Get.to(const TambahIzinView());
+                      Get.to(TambahIzinView());
                     },
                     child: Column(
                       children: [
@@ -298,12 +303,18 @@ class _DashboardViewState extends State<DashboardView> {
                             ),
                             Container(
                               margin: const EdgeInsets.only(left: 26.0),
-                              child: const Text(
-                                "sem",
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 24.0,
+                              child: Text.rich(
+                                TextSpan(
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                      text: auth.currentUser!.email,
+                                      style: const TextStyle(
+                                          color:
+                                              Color.fromARGB(255, 227, 143, 17),
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w800),
+                                    )
+                                  ],
                                 ),
                               ),
                             ),

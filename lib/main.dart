@@ -2,6 +2,8 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_hyper_ui/core.dart';
 import 'package:flutter_hyper_ui/shared/util/theme/theme.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
@@ -14,7 +16,10 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   Widget mainview = BasicMainNavigationView();
 
   return runApp(GetMaterialApp(
