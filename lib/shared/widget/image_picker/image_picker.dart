@@ -4,8 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:file_picker_cross/file_picker_cross.dart';
 import 'package:flutter_hyper_ui/core.dart';
-import 'package:flutter_hyper_ui/shared/util/input/input.dart';
-import 'package:flutter_hyper_ui/shared/widget/abstract/input_control/input_control.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:path/path.dart' as path;
 import 'package:flutter/material.dart';
@@ -178,7 +176,7 @@ class _ExImagePickerState extends State<ExImagePicker>
             if (!loading) ...[
               if (imageUrl != null)
                 Container(
-                  height: 120.0,
+                  height: 60.0,
                   width: MediaQuery.of(context).size.width,
                   padding: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
@@ -211,7 +209,7 @@ class _ExImagePickerState extends State<ExImagePicker>
                 ),
               if (imageUrl == null)
                 Container(
-                  height: 120.0,
+                  height: 60.0,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(

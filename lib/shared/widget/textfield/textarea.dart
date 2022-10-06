@@ -11,7 +11,7 @@ class ExTextArea extends StatelessWidget {
     Key? key,
     required this.id,
     required this.label,
-    this.maxLines = 4,
+    this.maxLines = 2,
     this.value,
   }) : super(key: key);
 
@@ -20,7 +20,7 @@ class ExTextArea extends StatelessWidget {
     return ExTextField(
       id: id,
       label: label,
-      maxLines: 4,
+      maxLines: 2,
       value: value,
     );
   }

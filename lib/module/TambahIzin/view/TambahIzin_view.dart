@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hyper_ui/core.dart';
-import 'package:flutter_hyper_ui/shared/widget/checkbox/checkbox.dart';
-import 'package:flutter_hyper_ui/shared/widget/datepicker/datepicker.dart';
-import 'package:flutter_hyper_ui/shared/widget/textfield/textarea.dart';
-import 'package:flutter_hyper_ui/shared/widget/textfield/textfield.dart';
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class TambahIzinView extends StatelessWidget {
   @override
@@ -14,8 +11,14 @@ class TambahIzinView extends StatelessWidget {
       init: TambahIzinController(),
       builder: (controller) {
         controller.view = this;
+        var date = DateTime.now();
+        String nameDay = DateFormat('EEEE').format(date);
+        String nameMount = DateFormat('MMMM').format(date);
+        String tanggalIjin = DateFormat('MMMM').format(date);
+
         return Scaffold(
           body: SingleChildScrollView(
+            controller: ScrollController(),
             child: Stack(
               children: [
                 Container(
@@ -79,7 +82,7 @@ class TambahIzinView extends StatelessWidget {
                   child: Column(
                     children: [
                       const SizedBox(
-                        height: 40.0,
+                        height: 10.0,
                       ),
                       Container(
                         padding: const EdgeInsets.symmetric(vertical: 4.0),
@@ -92,9 +95,6 @@ class TambahIzinView extends StatelessWidget {
                             fontSize: 18.0,
                           ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 20.0,
                       ),
                       SizedBox(
                         height: 100.0,
@@ -122,7 +122,7 @@ class TambahIzinView extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(
-                        height: 20.0,
+                        height: 10.0,
                       ),
                       Container(
                         padding: const EdgeInsets.symmetric(vertical: 4.0),
@@ -153,6 +153,8 @@ class TambahIzinView extends StatelessWidget {
                         id: "tanggal_ijin",
                         label: "Pilih Tanggal :",
                       ),
+                      const Expanded(
+                          child: ExImagePicker(id: "photo", label: "photo")),
                       const Expanded(
                         child: ExTextArea(
                           id: "deskripsi",

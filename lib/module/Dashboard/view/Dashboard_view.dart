@@ -39,13 +39,6 @@ class _DashboardViewState extends State<DashboardView> {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-    FirebaseAuth auth = FirebaseAuth.instance;
-    if (auth.currentUser != null ) {
-      print(auth.currentUser!.email);
-    }
-=======
->>>>>>> 6a1a68942ace0688fadf9fdbd323f3158a65f529
     return GetBuilder<DashboardController>(
       init: DashboardController(),
       builder: (controller) {
@@ -137,22 +130,25 @@ class _DashboardViewState extends State<DashboardView> {
                   ),
                   Column(
                     children: [
-                      Container(
-                        width: 150,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: const Color.fromARGB(255, 147, 127, 127),
-                            width: 2.0,
+                      InkWell(
+                        onTap: () => Get.to(const HistoryView()),
+                        child: Container(
+                          width: 150,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: const Color.fromARGB(255, 147, 127, 127),
+                              width: 2.0,
+                            ),
                           ),
-                        ),
-                        child: const CircleAvatar(
-                          backgroundColor: Colors.white,
-                          radius: 28.0,
-                          child: Icon(
-                            Icons.description,
-                            color: Color.fromARGB(255, 227, 143, 17),
-                            size: 28.0,
+                          child: const CircleAvatar(
+                            backgroundColor: Colors.white,
+                            radius: 28.0,
+                            child: Icon(
+                              Icons.description,
+                              color: Color.fromARGB(255, 227, 143, 17),
+                              size: 28.0,
+                            ),
                           ),
                         ),
                       ),
