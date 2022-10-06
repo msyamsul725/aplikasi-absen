@@ -31,7 +31,7 @@ class _DashboardViewState extends State<DashboardView> {
   @override
   Widget build(BuildContext context) {
     FirebaseAuth auth = FirebaseAuth.instance;
-    if (auth.currentUser != null) {
+    if (auth.currentUser != null ) {
       print(auth.currentUser!.email);
     }
     return GetBuilder<DashboardController>(
