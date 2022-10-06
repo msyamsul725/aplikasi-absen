@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hyper_ui/core.dart';
 import 'dart:async';
@@ -15,7 +14,6 @@ class DashboardView extends StatefulWidget {
 class _DashboardViewState extends State<DashboardView> {
   late String _timeString;
   late Timer timer;
-  String? email;
 
   @override
   void initState() {
@@ -41,10 +39,6 @@ class _DashboardViewState extends State<DashboardView> {
 
   @override
   Widget build(BuildContext context) {
-    FirebaseAuth auth = FirebaseAuth.instance;
-    if (auth.currentUser != null) {
-      print(auth.currentUser!.email);
-    }
     return GetBuilder<DashboardController>(
       init: DashboardController(),
       builder: (controller) {
@@ -59,7 +53,6 @@ class _DashboardViewState extends State<DashboardView> {
           children: [
             InkWell(
               onTap: () {
-                controller.isAbsen = true;
                 controller.absenMasuk();
                 controller.update();
               },
@@ -307,7 +300,7 @@ class _DashboardViewState extends State<DashboardView> {
                                 TextSpan(
                                   children: <TextSpan>[
                                     TextSpan(
-                                      text: auth.currentUser!.email,
+                                      text: controller.email,
                                       style: const TextStyle(
                                           color:
                                               Color.fromARGB(255, 227, 143, 17),

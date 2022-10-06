@@ -8,7 +8,6 @@ import 'package:flutter_hyper_ui/shared/util/theme/theme.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 import 'firebase_options.dart';
-import 'module/Navigation/view/Navigation_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,6 +20,7 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
   Widget mainview = BasicMainNavigationView();
+  // Widget mainview = WelcomeView();
 
   return runApp(GetMaterialApp(
       debugShowCheckedModeBanner: false, theme: defaultTheme, home: mainview));
