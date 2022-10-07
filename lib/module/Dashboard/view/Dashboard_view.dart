@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hyper_ui/core.dart';
 import 'dart:async';
@@ -177,6 +178,7 @@ class _DashboardViewState extends State<DashboardView> {
           children: [
             InkWell(
               onTap: () {
+                controller.absenKeluar();
                 controller.isAbsen = false;
                 controller.update();
               },
@@ -271,7 +273,20 @@ class _DashboardViewState extends State<DashboardView> {
                 children: [
                   //body
                   const SizedBox(
-                    height: 70.0,
+                    height: 40.0,
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(
+                      left: 280.0,
+                    ),
+                    child: IconButton(
+                      onPressed: () => controller.doLogout(),
+                      icon: const Icon(
+                        Icons.logout,
+                        size: 24.0,
+                        color: Colors.red,
+                      ),
+                    ),
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -342,6 +357,133 @@ class _DashboardViewState extends State<DashboardView> {
                   const SizedBox(
                     height: 40.0,
                   ),
+                  Container(
+                    height: 100.0,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(
+                          16.0,
+                        ),
+                      ),
+                    ),
+                    child: SizedBox(
+                      height: 100.0,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          SizedBox(
+                            width: 100.0,
+                            child: Column(
+                              children: [
+                                const SizedBox(
+                                  height: 30.0,
+                                  child: Text(
+                                    "Masuk",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 24.0,
+                                        color: Colors.blue),
+                                  ),
+                                ),
+                                StreamBuilder<QuerySnapshot>(
+                                  stream: FirebaseFirestore.instance
+                                      .collection("absenMasuk")
+                                      .orderBy("dateCreate", descending: true)
+                                      .snapshots(),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasError) {
+                                      return const Text("Error");
+                                    }
+                                    if (snapshot.data == null) {
+                                      return Container();
+                                    }
+                                    if (snapshot.data!.docs.isEmpty) {
+                                      return const Text("No Data");
+                                    }
+                                    final data = snapshot.data!;
+                                    return SizedBox(
+                                      height: 50.0,
+                                      child: ListView.builder(
+                                        itemCount: data.docs.length,
+                                        itemBuilder: (context, index) {
+                                          Map<String, dynamic> item =
+                                              (data.docs[index].data()
+                                                  as Map<String, dynamic>);
+                                          item["id"] = data.docs[index].id;
+                                          return SizedBox(
+                                            height: 50.0,
+                                            child: Text(
+                                              "${item['dateCreate']}",
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            width: 100.0,
+                            child: Column(
+                              children: [
+                                const SizedBox(
+                                  height: 30.0,
+                                  child: Text(
+                                    "keluar",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 24.0,
+                                        color: Colors.red),
+                                  ),
+                                ),
+                                StreamBuilder<QuerySnapshot>(
+                                  stream: FirebaseFirestore.instance
+                                      .collection("absenKeluar")
+                                      .orderBy("dateCreate", descending: true)
+                                      .snapshots(),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasError) {
+                                      return const Text("Error");
+                                    }
+                                    if (snapshot.data == null) {
+                                      return Container();
+                                    }
+                                    if (snapshot.data!.docs.isEmpty) {
+                                      return const Text("No Data");
+                                    }
+                                    final data = snapshot.data!;
+                                    return SizedBox(
+                                      height: 50.0,
+                                      child: ListView.builder(
+                                        itemCount: data.docs.length,
+                                        itemBuilder: (context, index) {
+                                          Map<String, dynamic> item =
+                                              (data.docs[index].data()
+                                                  as Map<String, dynamic>);
+                                          item["id"] = data.docs[index].id;
+                                          return SizedBox(
+                                            height: 50.0,
+                                            child: Text(
+                                              "${item['dateCreate']}",
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
                   Container(
                     padding: const EdgeInsets.symmetric(vertical: 4.0),
                     width: MediaQuery.of(context).size.width,
