@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hyper_ui/service/pengajuan_cuti.dart';
 import '../controller/Pengajuan_controller.dart';
@@ -138,13 +139,35 @@ class PengajuanView extends StatelessWidget {
                       },
                     ),
                   ),
+                  StreamBuilder<QuerySnapshot>(
+                    stream: FirebaseFirestore.instance
+                        .collection("products")
+                        .snapshots(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasError) return const Text("Error");
+                      if (snapshot.data == null) return Container();
+                      if (snapshot.data!.docs.isEmpty) {
+                        return const Text("No Data");
+                      }
+                      final data = snapshot.data!;
+                      return ListView.builder(
+                        itemCount: data.docs.length,
+                        itemBuilder: (context, index) {
+                          Map<String, dynamic> item =
+                              (data.docs[index].data() as Map<String, dynamic>);
+                          item["id"] = data.docs[index].id;
+                          return Container();
+                        },
+                      );
+                    },
+                  ),
                   ListView.builder(
                     itemCount: PengajuanCutiServices.pengajuan.length,
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       var item = PengajuanCutiServices.pengajuan[index];
                       var status = item.status;
-                      Color? statusColor;
+                      Color? statusColor = Colors.green;
                       if (status == "Pandding") {
                         statusColor = Colors.yellow;
                       } else if (status == "Reject") {

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hyper_ui/core.dart';
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class HistoryView extends StatelessWidget {
   const HistoryView({Key? key}) : super(key: key);
@@ -44,6 +45,12 @@ class HistoryView extends StatelessWidget {
                             Map<String, dynamic> item = (data.docs[index].data()
                                 as Map<String, dynamic>);
                             item["id"] = data.docs[index].id;
+                            var tangalIzin = item["tanggal_ijin"];
+
+                            var parsedDate = DateTime.parse(tangalIzin);
+                            String nameDay =
+                                DateFormat('yMd').format(parsedDate);
+
                             return Row(
                               children: [
                                 Expanded(
@@ -53,8 +60,7 @@ class HistoryView extends StatelessWidget {
                                     child: Card(
                                       child: ListTile(
                                         title: Text("${item["cek_box"]}"),
-                                        subtitle:
-                                            Text("${item["tanggal_ijin"]}"),
+                                        subtitle: Text(nameDay),
                                         trailing: ElevatedButton.icon(
                                             icon: const Icon(Icons.check),
                                             label: const Text("Cek"),
