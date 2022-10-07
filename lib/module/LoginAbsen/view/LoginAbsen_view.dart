@@ -66,6 +66,7 @@ class LoginAbsenView extends StatelessWidget {
                         height: 60.0,
                         width: 340.0,
                         child: TextField(
+                          obscureText: true,
                           controller: controller.passwordID,
                           autofocus: true,
                           style: const TextStyle(fontSize: 20),
@@ -76,7 +77,7 @@ class LoginAbsenView extends StatelessWidget {
                                       const BorderSide(color: Colors.grey)),
                               prefixIcon: const Icon(Icons.key),
                               suffixIcon: const Icon(
-                                Icons.visibility,
+                                Icons.visibility_off,
                                 color: Color.fromARGB(255, 227, 143, 17),
                               ),
                               labelText: "Password",

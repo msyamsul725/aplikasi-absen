@@ -140,11 +140,11 @@ class TambahIzinView extends StatelessWidget {
                         id: "cek_box",
                         items: [
                           {
-                            "value": "ijin_terlambat",
+                            "value": "ijin terlambat datang",
                             'label': "Ijin Terlambat Datang",
                           },
                           {
-                            "value": "ijin_tkmasuk",
+                            "value": "ijin tidak masuk",
                             'label': "Ijin Tidak Masuk",
                           }
                         ],

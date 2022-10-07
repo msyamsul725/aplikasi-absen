@@ -29,9 +29,28 @@ class DashboardController extends GetxController {
     isAbsen = true;
 
     var timeNow = DateTime.now();
-    String nameMount = DateFormat('yMd').format(timeNow);
+    String nameMount = DateFormat('Hms').format(timeNow);
 
     await FirebaseFirestore.instance.collection("absenMasuk").add({
+      "date": "Hari ini",
+      "dateCreate": nameMount,
+      "email": email,
+    });
+    update();
+  }
+
+  absenKeluar() async {
+    if (FirebaseAuth.instance.currentUser == null) {
+      await Get.to(const LoginAbsenView());
+      return;
+    }
+    email = auth.currentUser!.email;
+    isAbsen = true;
+
+    var timeNow = DateTime.now();
+    String nameMount = DateFormat('Hms').format(timeNow);
+
+    await FirebaseFirestore.instance.collection("absenKeluar").add({
       "date": "Hari ini",
       "dateCreate": nameMount,
       "email": email,
@@ -84,5 +103,10 @@ class DashboardController extends GetxController {
   void onInit() {
     isChacking();
     super.onInit();
+  }
+
+  doLogout() async {
+    await FirebaseAuth.instance.signOut();
+    Get.to(const LoginAbsenView());
   }
 }

@@ -44,18 +44,81 @@ class ExampleCalendarView extends StatelessWidget {
                             Map<String, dynamic> item = (data.docs[index].data()
                                 as Map<String, dynamic>);
                             item["id"] = data.docs[index].id;
-                            return Card(
-                              child: ListTile(
-                                leading: CircleAvatar(
-                                  backgroundColor: Colors.grey[200],
-                                  backgroundImage: const NetworkImage(
-                                    "https://i.ibb.co/QrTHd59/woman.jpg",
+                            return Row(
+                              children: [
+                                Expanded(
+                                  child: Card(
+                                    child: ListTile(
+                                      title: Text("${item['date']}"),
+                                      subtitle: Text("${item['dateCreate']}"),
+                                      trailing: Text("${item['email']}"),
+                                    ),
                                   ),
                                 ),
-                                title: Text("${item['date']}"),
-                                subtitle: Text("${item['dateCreate']}"),
-                                trailing: Text("${item['email']}"),
-                              ),
+                                IconButton(
+                                  onPressed: () {
+                                    FirebaseFirestore.instance
+                                        .collection("absenMasuk")
+                                        .doc(item["id"])
+                                        .delete();
+                                  },
+                                  icon: const Icon(
+                                    Icons.delete,
+                                    size: 24.0,
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+                      );
+                    },
+                  ),
+                  StreamBuilder<QuerySnapshot>(
+                    stream: FirebaseFirestore.instance
+                        .collection("absenKeluar")
+                        .snapshots(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasError) return const Text("Error");
+                      if (snapshot.data == null) return Container();
+                      if (snapshot.data!.docs.isEmpty) {
+                        return const Text("No Data");
+                      }
+                      final data = snapshot.data!;
+
+                      return SizedBox(
+                        height: MediaQuery.of(context).size.height,
+                        width: MediaQuery.of(context).size.width,
+                        child: ListView.builder(
+                          itemCount: data.docs.length,
+                          itemBuilder: (context, index) {
+                            Map<String, dynamic> item = (data.docs[index].data()
+                                as Map<String, dynamic>);
+                            item["id"] = data.docs[index].id;
+                            return Row(
+                              children: [
+                                Expanded(
+                                  child: Card(
+                                    child: ListTile(
+                                      title: Text("${item['date']}"),
+                                      subtitle: Text("${item['dateCreate']}"),
+                                      trailing: Text("${item['email']}"),
+                                    ),
+                                  ),
+                                ),
+                                IconButton(
+                                  onPressed: () {
+                                    FirebaseFirestore.instance
+                                        .collection("absenKeluar")
+                                        .doc(item["id"])
+                                        .delete();
+                                  },
+                                  icon: const Icon(
+                                    Icons.delete,
+                                    size: 24.0,
+                                  ),
+                                ),
+                              ],
                             );
                           },
                         ),
