@@ -218,7 +218,7 @@ class PengajuanView extends StatelessWidget {
                                     bottom: 10,
                                     left: 10,
                                     child: Container(
-                                      height: 30.0,
+                                      height: 32.0,
                                       width: 250,
                                       decoration: const BoxDecoration(
                                         borderRadius: BorderRadius.all(
