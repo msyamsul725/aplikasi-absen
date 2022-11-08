@@ -36,11 +36,8 @@ flutter pub get --verbose
 
 
 ### Screenshot
-![alt text](https://github.com/magerngulik/fugi_movie_app_team1/raw/master/resources/1.png)
-![alt text](https://github.com/magerngulik/fugi_movie_app_team1/raw/master/resources/2.png)
-![alt text](https://github.com/magerngulik/fugi_movie_app_team1/raw/master/resources/3.png)
-![alt text](https://github.com/magerngulik/fugi_movie_app_team1/raw/master/resources/4.png)
-![alt text](https://github.com/magerngulik/fugi_movie_app_team1/raw/master/resources/5.png)
+![alt text](https://github.com/msyamsul725/aplikasi-absen/blob/main/assets/image/sc_fitur.jpg)
+
 <br/>
 
 
